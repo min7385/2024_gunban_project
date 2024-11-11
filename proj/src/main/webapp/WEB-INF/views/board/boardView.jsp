@@ -33,7 +33,7 @@
     					    </td>
     						<td style="text-align: center; width: 10%; border: 1px solid #ddd;">${board.memName}</td>
     						<td style="text-align: center; width: 10%; border: 1px solid #ddd;">${board.createDt}</td>
-    						<td style="text-align: center; width: 10%; border: 1px solid #ddd;">99</td>
+    						<td style="text-align: center; width: 10%; border: 1px solid #ddd;">9</td>
 				        </tr>
 				    </c:forEach>
 				</tbody>

@@ -37,7 +37,7 @@ public class boardController {
 	
 	@RequestMapping("/boardWriteView")
 	public String boardWriteView(HttpSession session) {
-		if(session.getAttribute("login")==null) {
+		if(session.getAttribute("login") == null) {
 			return "member/loginView";
 		}
 		return "board/boardWriteView";
@@ -57,10 +57,10 @@ public class boardController {
 	public String boardDetailView(int boardNo, Model model) throws Exception {
 		
 		BoardVO board = boardService.getBoard(boardNo);
-//		List<ReplyVO> replyList = boardService.getReplyList(boardNo);
+		List<ReplyVO> replyList = boardService.getReplyList(boardNo);
 		model.addAttribute("board", board);
-//		model.addAttribute("replyList", replyList);
-		model.addAttribute("replyList", null);
+		model.addAttribute("replyList", replyList);
+//		model.addAttribute("replyList", null);
 		
 		return "board/boardDetailView";
 	}
