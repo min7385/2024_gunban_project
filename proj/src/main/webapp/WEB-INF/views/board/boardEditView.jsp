@@ -17,7 +17,7 @@
     	    <!-- Contact Section Form-->
     	    <div class="row justify-content-center">
     	    	<div class="col-lg-8 col-xl-7">
-    	    		<form action="<c:url value="/boardEditDo" />" method="post">
+    	    		<form action="${pageContext.request.contextPath}/boardEditDo" method="post">
     	    			<!-- title input -->
     	    			<div class="mb-3">
     	    				<label for="title">제목</label>
@@ -25,6 +25,7 @@
     	    			</div>
     	    			<!-- content input -->
     	    			<div class="mb-3">
+    	    				<label>내용</label>
     	    				<textarea class="form-control" name="boardContent" style="height: 20rem">${board.boardContent}</textarea>
     	    			</div>
     	    			<input type="hidden" name="boardNo" value="${board.boardNo}" />

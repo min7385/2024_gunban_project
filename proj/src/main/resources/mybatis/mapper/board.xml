@@ -3,32 +3,32 @@
 <mapper namespace="com.proj.my.board.dao.IBoardDAO">
 	
 	<select id="getBoardList" resultType="BoardVO">
-	
-		SELECT a.board_no
-		     , a.board_title
-		     , a.board_content
-		     , b.mem_id
-		     , b.mem_name
-		     , a.create_dt
-		FROM boards a, members b
-		WHERE a.mem_id = b.mem_id
-		ORDER BY a.board_no DESC
-	
-	</select>
-	
-	<select id="getBoard" resultType="BoardVO" parameterType="int">
-		
-		 SELECT a.board_no
+	    SELECT a.board_no
 	         , a.board_title
 	         , a.board_content
-			 , a.mem_id
+	         , b.mem_id
 	         , b.mem_name
 	         , a.create_dt
-	     FROM boards a, members b
-	     WHERE a.mem_id = b.mem_id
-	     AND a.board_no = #{boardNo}
-		
+	    FROM boards a, members b
+	    WHERE a.mem_id = b.mem_id
+	    AND a.use_yn = 'Y'  <!-- use_yn이 'Y'인 게시글만 조회 -->
+	    ORDER BY a.board_no DESC
 	</select>
+
+	
+	<select id="getBoard" resultType="BoardVO" parameterType="int">
+	    SELECT a.board_no
+	         , a.board_title
+	         , a.board_content
+	         , a.mem_id
+	         , b.mem_name
+	         , a.create_dt
+	    FROM boards a, members b
+	    WHERE a.mem_id = b.mem_id
+	    AND a.board_no = #{boardNo}
+	    AND a.use_yn = 'Y'  <!-- use_yn이 'Y'인 게시글만 조회 -->
+	</select>
+
 	
 	<insert id="writeBoard" parameterType="com.proj.my.board.vo.BoardVO">
 		INSERT INTO boards(
@@ -59,6 +59,7 @@
 	<!-- 게시판 삭제 -->
 	<update id="deleteBoard" parameterType="int">
 		UPDATE boards
+		SET use_yn = 'N'
 		WHERE board_no = #{boardNo}
 	</update>
 	
@@ -99,8 +100,5 @@
 	</update>
 	
 	
-	
-	
-
 
 </mapper>

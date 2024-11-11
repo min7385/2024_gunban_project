@@ -55,7 +55,7 @@ public class BoardService {
 		int result = dao.deleteBoard(boardNo);
 		
 		if(result == 0) {
-			throw new Exception();
+			throw new Exception("게시글 삭제 실패");
 		}
 	}
 	
