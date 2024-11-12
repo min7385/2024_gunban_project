@@ -166,6 +166,8 @@
     				$("#replyBody").prepend(str);
     			}
     		});
+    		// 입력란 초기화
+    		document.getElementById("replyInput").value = "";
     	}
     	function fn_del(reply_no){
     		if(confirm("댓글 삭제하겠니?")){
